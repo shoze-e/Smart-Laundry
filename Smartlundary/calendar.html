@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>!function(){var t=localStorage.getItem("color-theme")||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t)}();</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forecast Calendar — Smart Weather Laundry Scheduler</title>
+  <meta name="description" content="16-day laundry forecast calendar. Find the best day for outdoor drying in your Lagos LGA.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+<main>
+  <div class="page-header">
+    <div class="flex-between" style="flex-wrap:wrap;gap:var(--spacing-4);align-items:flex-start;">
+      <div>
+        <p class="section-label">Smart Laundry</p>
+        <h1 id="calendarHeading">Forecast Calendar</h1>
+        <p style="margin-bottom:0;" id="calendarSubheading">Which day this week is best for laundry? The calendar shows drying scores for every forecast day.</p>
+      </div>
+      <div>
+        <label style="font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-text-tertiary);display:block;margin-bottom:4px;">
+          Lagos LGA:
+        </label>
+        <div id="calendarLgaSelectorMount"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="bestDayContainer" style="margin-bottom:var(--spacing-4);"></div>
+  <div id="calendarContainer">
+    <div class="card skeleton" style="height:100px;margin-bottom:var(--spacing-3);"></div>
+    <div class="card skeleton" style="height:100px;margin-bottom:var(--spacing-3);"></div>
+    <div class="card skeleton" style="height:100px;"></div>
+  </div>
+</main>
+<script type="module" src="js/calendar-view.js"></script>
+</body>
+</html>
