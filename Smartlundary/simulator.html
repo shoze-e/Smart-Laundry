@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>!function(){var t=localStorage.getItem("color-theme")||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t)}();</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What-If Simulator — Smart Weather Laundry Scheduler</title>
+  <meta name="description" content="Interactively adjust weather conditions based on Lagos LGA baselines to see how the laundry recommendation engine responds.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+<main>
+  <div class="page-header">
+    <div class="flex-between" style="flex-wrap:wrap;gap:var(--spacing-4);align-items:flex-start;">
+      <div>
+        <p class="section-label">Weather Laboratory</p>
+        <h1>What-If Simulator</h1>
+        <p style="margin-bottom:0;">Adjust meteorological sliders to explore how temperature, humidity, wind, and rain impact drying time and suitability.</p>
+      </div>
+      <div>
+        <label style="font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-text-tertiary);display:block;margin-bottom:4px;">
+          Baseline Lagos LGA:
+        </label>
+        <div id="simLgaSelectorMount"></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--spacing-4);align-items:start;" class="sim-grid">
+
+    <!-- Controls -->
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--spacing-4);">
+        <h3 style="margin:0;">Weather Conditions</h3>
+        <button type="button" id="loadLgaBaselineBtn" class="btn btn-outline" style="padding:6px 12px;font-size:0.78rem;">
+          ↻ Reset to Live LGA Weather
+        </button>
+      </div>
+      <form id="simForm">
+
+        <div class="form-group">
+          <label class="form-label" for="simTemp">
+            🌡 Temperature — <strong id="simTempVal">30</strong>°C
+          </label>
+          <input type="range" id="simTemp" min="10" max="45" value="30" aria-label="Temperature">
+          <div style="display:flex;justify-content:space-between;font-size:0.7rem;color:var(--color-text-tertiary);margin-top:2px;"><span>10°C</span><span>45°C</span></div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="simHum">
+            💧 Humidity — <strong id="simHumVal">60</strong>%
+          </label>
+          <input type="range" id="simHum" min="0" max="100" value="60" aria-label="Humidity">
+          <div style="display:flex;justify-content:space-between;font-size:0.7rem;color:var(--color-text-tertiary);margin-top:2px;"><span>0%</span><span>100%</span></div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="simWind">
+            💨 Wind Speed — <strong id="simWindVal">15</strong> km/h
+          </label>
+          <input type="range" id="simWind" min="0" max="50" value="15" aria-label="Wind speed">
+          <div style="display:flex;justify-content:space-between;font-size:0.7rem;color:var(--color-text-tertiary);margin-top:2px;"><span>0</span><span>50 km/h</span></div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="simRainProb">
+            🌧 Rain Probability — <strong id="simRainProbVal">10</strong>%
+          </label>
+          <input type="range" id="simRainProb" min="0" max="100" value="10" aria-label="Rain probability">
+          <div style="display:flex;justify-content:space-between;font-size:0.7rem;color:var(--color-text-tertiary);margin-top:2px;"><span>0%</span><span>100%</span></div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="simPrecip">
+            ☔ Active Precipitation — <strong id="simPrecipVal">0.0</strong> mm
+          </label>
+          <input type="range" id="simPrecip" min="0" max="10" step="0.1" value="0" aria-label="Precipitation">
+          <div style="display:flex;justify-content:space-between;font-size:0.7rem;color:var(--color-text-tertiary);margin-top:2px;"><span>0 mm</span><span>10 mm</span></div>
+        </div>
+
+        <hr style="border:none;border-top:1px solid var(--color-border);margin:var(--spacing-4) 0;">
+
+        <div class="form-group">
+          <label class="form-label" for="simFabric">Fabric Type</label>
+          <select id="simFabric" class="form-select"></select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="simWash">Washing Method</label>
+          <select id="simWash" class="form-select"></select>
+        </div>
+        <div class="form-group" style="margin-bottom:0;">
+          <label class="form-label" for="simLoad">Load Size</label>
+          <select id="simLoad" class="form-select"></select>
+        </div>
+
+      </form>
+    </div>
+
+    <!-- Live Results -->
+    <div id="simResultContainer">
+      <div class="card" style="text-align:center;padding:var(--spacing-8);">
+        <span style="font-size:3rem;display:block;margin-bottom:var(--spacing-4);">🔬</span>
+        <h3>Live Simulation</h3>
+        <p>Adjust the sliders on the left — the algorithm responds in real-time.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <style>
+    @media (max-width:768px) {
+      .sim-grid { grid-template-columns: 1fr !important; }
+    }
+  </style>
+</main>
+<script type="module" src="js/simulator.js"></script>
+</body>
+</html>

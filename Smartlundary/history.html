@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>!function(){var t=localStorage.getItem("color-theme")||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t)}();</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laundry History — Smart Weather Laundry Scheduler</title>
+  <meta name="description" content="View your saved laundry plans and drying recommendations history.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+<main>
+  <div class="page-header">
+    <div class="flex-between" style="flex-wrap:wrap;gap:var(--spacing-3);">
+      <div>
+        <p class="section-label">Smart Laundry</p>
+        <h1>Laundry History</h1>
+        <p style="margin-bottom:0;">Your saved laundry plans and recommendations, stored locally on your device.</p>
+      </div>
+      <button id="clearHistoryBtn" class="btn btn-outline" style="color:var(--color-poor);border-color:var(--color-poor);" aria-label="Clear all history">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>
+        Clear History
+      </button>
+    </div>
+  </div>
+
+  <div id="statsContainer"></div>
+  <div id="historyContainer"></div>
+</main>
+<script type="module" src="js/history-view.js"></script>
+</body>
+</html>
